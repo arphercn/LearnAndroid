@@ -6,10 +6,14 @@ import java.util.List;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import com.arpher.me.model.Category;
 import com.arpher.me.model.ContactsManager;
+import android.widget.Toast;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -22,18 +26,19 @@ public class CategoryActivity extends AppCompatActivity {
 
         // retrieve data from the database
         ContactsManager cm        = new ContactsManager(this);
-        List<Category> categories =  cm.getAllCategories();
+        final List<Category> categories =  cm.getAllCategories();
 
-        // transform data to a list of strings
-        ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < categories.size(); ++i) {
-            list.add(categories.get(i).getName());
-        }
+        CategoryAdapter adapter = new CategoryAdapter(this,
+                R.layout.list_category, categories);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, list);
-
-        // bind the listview and the adapter
         listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
+                // When clicked, show a Toast text
+                Toast.makeText(getApplicationContext(),
+                        "id:" + categories.get(position).getId(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

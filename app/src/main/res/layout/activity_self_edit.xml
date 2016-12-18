@@ -18,12 +18,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name" />
+                android:text="账号" />
             <EditText
                 android:id="@+id/name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="full name" />
+                android:hint="用户名" />
         </LinearLayout>
 
         <LinearLayout
@@ -34,12 +34,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Blog Address" />
+                android:text="网址" />
             <EditText
                 android:id="@+id/url"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="url" />
+                android:hint="个人博客(可选)" />
         </LinearLayout>
     </LinearLayout>
 

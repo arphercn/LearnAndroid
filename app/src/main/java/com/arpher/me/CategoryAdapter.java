@@ -23,30 +23,39 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         this.objects = objects;
     }
 
+    private class Holder {
+        TextView tv1;
+        TextView tv2;
+        public Holder(TextView tv1, TextView tv2) {
+            this.tv1 = tv1;
+            this.tv2 = tv2;
+        }
+    }
+
     // For each row, control the view assigned to the data
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
+        Holder holder;
 
         // Inflate the row view, if it doesn't exist.
         // ViewList is capable of reusing the views.
         if(v == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(viewId, parent, false);
+
+            holder = new Holder((TextView) v.findViewById(R.id.seq),
+                    (TextView) v.findViewById(R.id.name));
+            v.setTag(holder);
+        } else {
+            holder = (Holder) v.getTag();
         }
 
         Category category = objects.get(position);
 
         // Add data to views
         if(category != null) {
-            TextView tv1 = (TextView) v.findViewById(R.id.seq);
-            if(tv1 != null) {
-                tv1.setText(Integer.toString(category.getId()));
-            }
-
-            TextView tv2 = (TextView) v.findViewById(R.id.name);
-            if(tv2 != null) {
-                tv2.setText(category.getName());
-            }
+            holder.tv1.setText(Integer.toString(category.getId()));
+            holder.tv2.setText(category.getName());
         }
 
         return v;

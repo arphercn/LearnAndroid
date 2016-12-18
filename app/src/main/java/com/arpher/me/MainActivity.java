@@ -11,6 +11,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.arpher.me.model.Contact;
+import com.arpher.me.model.Category;
+import com.arpher.me.model.ContactsManager;
+
 public class MainActivity extends AppCompatActivity {
     private SharedPreferences sharedPref;
 
@@ -36,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(intent);
             }
         });
+
+
+        ContactsManager cm = new ContactsManager(this);
+
+        // add categories to the database
+        cm.createCategory(new Category("Friend"));
+        cm.createCategory(new Category("Enemy"));
+
+        // add contact to the database
+        Category cat1 = cm.getCategory(1);
+        cm.createContact(new Contact("arpher", "http://arpher.com/about", cat1));
+
+        // retrieve and display
+        Toast.makeText(this, cm.getContact(1).getName(), Toast.LENGTH_LONG).show();
     }
 
     @Override

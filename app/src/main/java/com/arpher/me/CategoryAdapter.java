@@ -40,12 +40,11 @@ public class CategoryAdapter extends ArrayAdapter<Category> {
         // Inflate the row view, if it doesn't exist.
         // ViewList is capable of reusing the views.
         if(v == null) {
-            LayoutInflater inflater = (LayoutInflater) context
-                                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(viewId, parent, false);
 
             holder = new Holder((TextView) v.findViewById(R.id.seq),
-                                (TextView) v.findViewById(R.id.name));
+                    (TextView) v.findViewById(R.id.name));
             v.setTag(holder);
         } else {
             holder = (Holder) v.getTag();

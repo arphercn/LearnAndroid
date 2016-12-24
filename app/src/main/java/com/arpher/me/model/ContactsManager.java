@@ -231,35 +231,4 @@ public class ContactsManager extends SQLiteOpenHelper {
                 new String[] { String.valueOf(category.getId()) });
         db.close();
     }
-
-    // Getting all contacts of a category
-    public List<Contact> getContactsByCategoryId(int categoryId) {
-        List<Contact> contacts = new LinkedList<Contact>();
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.query(TABLE_CONTACTS, new String[] { KEY_ID,
-                        KEY_NAME, KEY_URL, KEY_CATEGORY_ID }, KEY_CATEGORY_ID + "=?",
-                new String[] { String.valueOf(categoryId) }, null, null, null, null);
-
-        // iterate over all retrieved rows
-        Contact contact = null;
-        if (cursor.moveToFirst()) {
-            do {
-                contact = new Contact();
-                contact.setId(Integer.parseInt(cursor.getString(0)));
-                contact.setName(cursor.getString(1));
-                contact.setUrl(cursor.getString(2));
-
-                Category category = getCategory(Integer.parseInt(cursor.getString(3)));
-                contact.setCategory(category);
-
-                // Add contact to contacts
-                contacts.add(contact);
-            } while (cursor.moveToNext());
-        }
-
-        // return contacts
-        return contacts;
-    }
 }

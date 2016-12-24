@@ -14,7 +14,6 @@ import android.widget.ListView;
 import com.arpher.me.model.Category;
 import com.arpher.me.model.ContactsManager;
 import android.widget.Toast;
-import android.content.Intent;
 
 public class CategoryActivity extends AppCompatActivity {
 
@@ -36,17 +35,9 @@ public class CategoryActivity extends AppCompatActivity {
 
         listview.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-
                 // When clicked, show a Toast text
-//                Toast.makeText(getApplicationContext(),
-//                        "id:" + categories.get(position).getId(), Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent(CategoryActivity.this, ContactListActivity.class);
-                // put extra data into intent
-                // the data will be passed along with the intent, as a key-value pair
-                intent.putExtra("CATEGORY_ID", categories.get(position).getId());
-
-                startActivity(intent);
+                Toast.makeText(getApplicationContext(),
+                        "id:" + categories.get(position).getId(), Toast.LENGTH_SHORT).show();
             }
         });
     }

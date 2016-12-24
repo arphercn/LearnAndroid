@@ -34,28 +34,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         Button btn2 = (Button) findViewById(R.id.category);
         btn2.setOnClickListener(this);
 
-//        btn.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(MainActivity.this, SelfEditActivity.class);
-//                MainActivity.this.startActivity(intent);
-//            }
-//        });
-
-
-//        ContactsManager cm = new ContactsManager(this);
-//
-//        // add categories to the database
-//        cm.createCategory(new Category("Friend"));
-//        cm.createCategory(new Category("Enemy"));
-//
-//        // add contact to the database
-//        Category cat1 = cm.getCategory(1);
-//        cm.createContact(new Contact("arpher", "http://arpher.com/about", cat1));
-//
-//        // retrieve and display 重新打开引用时显示一次arpher
-//        Toast.makeText(this, cm.getContact(1).getName(), Toast.LENGTH_LONG).show();
     }
 
     @Override

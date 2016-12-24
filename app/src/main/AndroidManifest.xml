@@ -16,7 +16,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".SelfEditActivity" />
-        <activity android:name=".CategoryActivity"></activity>
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".ContactListActivity" />
+        <activity android:name=".BlogActivity"></activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
